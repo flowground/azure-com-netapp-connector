@@ -1,0 +1,110 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string"
+        },
+        "poolName": {
+            "required": true,
+            "type": "string"
+        },
+        "volumeName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Volume patch resource",
+            "properties": {
+                "id": {
+                    "description": "Resource Id",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Resource location",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Resource name",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Patchable volume properties",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "serviceLevel": {
+                            "default": "Premium",
+                            "description": "The service level of the file system",
+                            "enum": [
+                                "Standard",
+                                "Premium",
+                                "Extreme"
+                            ],
+                            "example": "Extreme",
+                            "title": "serviceLevel",
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ServiceLevel",
+                                "values": [
+                                    {
+                                        "description": "Standard service level",
+                                        "value": "Standard"
+                                    },
+                                    {
+                                        "description": "Premium service level",
+                                        "value": "Premium"
+                                    },
+                                    {
+                                        "description": "Extreme service level",
+                                        "value": "Extreme"
+                                    }
+                                ]
+                            }
+                        },
+                        "usageThreshold": {
+                            "default": 107374182400,
+                            "description": "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB.",
+                            "example": 107374182400,
+                            "format": "int64",
+                            "maximum": 109951162777600,
+                            "minimum": 107374182400,
+                            "title": "usageThreshold",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "tags": {
+                    "description": "Resource tags",
+                    "type": "object"
+                },
+                "type": {
+                    "description": "Resource type",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-ms-azure-resource": true
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2017-08-15"
+        }
+    }
+}

@@ -1,0 +1,118 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string"
+        },
+        "poolName": {
+            "required": true,
+            "type": "string"
+        },
+        "volumeName": {
+            "required": true,
+            "type": "string"
+        },
+        "snapshotName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Snapshot of a Volume",
+            "properties": {
+                "id": {
+                    "description": "Resource Id",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Resource location",
+                    "type": "string",
+                    "x-ms-mutability": [
+                        "read",
+                        "create"
+                    ]
+                },
+                "name": {
+                    "description": "Resource name",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Snapshot Properties",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "creationDate": {
+                            "description": "The creation date of the snapshot",
+                            "example": "2017-08-15 13:23:33",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "title": "name",
+                            "type": "string"
+                        },
+                        "fileSystemId": {
+                            "description": "UUID v4 used to identify the FileSystem",
+                            "example": "9760acf5-4638-11e7-9bdb-020073ca3333",
+                            "maxLength": 36,
+                            "minLength": 36,
+                            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+                            "title": "fileSystemId",
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "Azure lifecycle management",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "snapshotId": {
+                            "description": "UUID v4 used to identify the Snapshot",
+                            "example": "9760acf5-4638-11e7-9bdb-020073ca3333",
+                            "maxLength": 36,
+                            "minLength": 36,
+                            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+                            "readOnly": true,
+                            "title": "snapshotId",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "fileSystemId"
+                    ],
+                    "type": "object"
+                },
+                "tags": {
+                    "description": "Resource tags",
+                    "x-ms-client-flatten": true,
+                    "type": "object"
+                },
+                "type": {
+                    "description": "Resource type",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "location",
+                "properties"
+            ],
+            "type": "object",
+            "x-ms-azure-resource": true
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2017-08-15"
+        }
+    }
+}

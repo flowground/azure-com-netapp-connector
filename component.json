@@ -1,0 +1,424 @@
+{
+    "title": "Microsoft NetApp",
+    "description": "Microsoft NetApp Azure Resource Provider specification",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/netapp/2017-08-15/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available Microsoft.NetApp Rest API operations",
+            "description": "Lists all of the available Microsoft.NetApp Rest API operations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Accounts_List": {
+            "main": "./lib/actions/Accounts_List.js",
+            "title": "Lists all NetApp accounts in the resource group",
+            "description": "Lists all NetApp accounts in the resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Accounts_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Accounts_Delete": {
+            "main": "./lib/actions/Accounts_Delete.js",
+            "title": "Delete a NetApp account",
+            "description": "Delete a NetApp account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Accounts_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Accounts_Get": {
+            "main": "./lib/actions/Accounts_Get.js",
+            "title": "Get the NetApp account",
+            "description": "Get the NetApp account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Accounts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Accounts_Update": {
+            "main": "./lib/actions/Accounts_Update.js",
+            "title": "Patch a NetApp account",
+            "description": "Patch a NetApp account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Accounts_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Accounts_CreateOrUpdate": {
+            "main": "./lib/actions/Accounts_CreateOrUpdate.js",
+            "title": "Create or update a NetApp account",
+            "description": "Create or update a NetApp account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Accounts_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pools_List": {
+            "main": "./lib/actions/Pools_List.js",
+            "title": "Lists all capacity pools in the NetApp Account",
+            "description": "Lists all capacity pools in the NetApp Account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pools_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pools_Delete": {
+            "main": "./lib/actions/Pools_Delete.js",
+            "title": "Delete a capacity pool",
+            "description": "Delete a capacity pool",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pools_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pools_Get": {
+            "main": "./lib/actions/Pools_Get.js",
+            "title": "Get a capacity pool",
+            "description": "Get a capacity pool",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pools_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pools_Update": {
+            "main": "./lib/actions/Pools_Update.js",
+            "title": "Patch a capacity pool",
+            "description": "Patch a capacity pool",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pools_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pools_CreateOrUpdate": {
+            "main": "./lib/actions/Pools_CreateOrUpdate.js",
+            "title": "Create or Update a capacity pool",
+            "description": "Create or Update a capacity pool",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pools_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Volumes_List": {
+            "main": "./lib/actions/Volumes_List.js",
+            "title": "List volumes",
+            "description": "List volumes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Volumes_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Volumes_Delete": {
+            "main": "./lib/actions/Volumes_Delete.js",
+            "title": "Delete a volume",
+            "description": "Delete a volume",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Volumes_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Volumes_Get": {
+            "main": "./lib/actions/Volumes_Get.js",
+            "title": "Get a volume",
+            "description": "Get a volume",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Volumes_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Volumes_Update": {
+            "main": "./lib/actions/Volumes_Update.js",
+            "title": "Patch a volume",
+            "description": "Patch a volume",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Volumes_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Volumes_CreateOrUpdate": {
+            "main": "./lib/actions/Volumes_CreateOrUpdate.js",
+            "title": "Create or update a volume",
+            "description": "Create or update a volume",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Volumes_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "MountTargets_List": {
+            "main": "./lib/actions/MountTargets_List.js",
+            "title": "List mount targets",
+            "description": "List mount targets",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/MountTargets_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_List": {
+            "main": "./lib/actions/Snapshots_List.js",
+            "title": "List snapshots",
+            "description": "List snapshots",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Delete": {
+            "main": "./lib/actions/Snapshots_Delete.js",
+            "title": "Delete snapshot",
+            "description": "Delete snapshot",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Get": {
+            "main": "./lib/actions/Snapshots_Get.js",
+            "title": "Get a snapshot",
+            "description": "Get a snapshot",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Update": {
+            "main": "./lib/actions/Snapshots_Update.js",
+            "title": "Patch a snapshot",
+            "description": "Patch a snapshot",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Snapshots_Create": {
+            "main": "./lib/actions/Snapshots_Create.js",
+            "title": "Create a snapshot",
+            "description": "Create a snapshot",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Snapshots_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,149 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string"
+        },
+        "poolName": {
+            "required": true,
+            "type": "string"
+        },
+        "volumeName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Volume resource",
+            "properties": {
+                "id": {
+                    "description": "Resource Id",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Resource location",
+                    "type": "string",
+                    "x-ms-mutability": [
+                        "read",
+                        "create"
+                    ]
+                },
+                "name": {
+                    "description": "Resource name",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Volume properties",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "creationToken": {
+                            "description": "A unique file path for the volume. Used when creating mount targets",
+                            "example": "some-amazing-filepath",
+                            "maximum": 40,
+                            "minimum": 16,
+                            "title": "Creation Token or File Path",
+                            "type": "string"
+                        },
+                        "fileSystemId": {
+                            "description": "Unique FileSystem Identifier.",
+                            "example": "9760acf5-4638-11e7-9bdb-020073ca7778",
+                            "maxLength": 36,
+                            "minLength": 36,
+                            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+                            "readOnly": true,
+                            "title": "FileSystem ID",
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "Azure lifecycle management",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "serviceLevel": {
+                            "default": "Premium",
+                            "description": "The service level of the file system",
+                            "enum": [
+                                "Standard",
+                                "Premium",
+                                "Extreme"
+                            ],
+                            "example": "Extreme",
+                            "title": "serviceLevel",
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ServiceLevel",
+                                "values": [
+                                    {
+                                        "description": "Standard service level",
+                                        "value": "Standard"
+                                    },
+                                    {
+                                        "description": "Premium service level",
+                                        "value": "Premium"
+                                    },
+                                    {
+                                        "description": "Extreme service level",
+                                        "value": "Extreme"
+                                    }
+                                ]
+                            }
+                        },
+                        "subnetId": {
+                            "description": "The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes",
+                            "type": "string"
+                        },
+                        "usageThreshold": {
+                            "default": 107374182400,
+                            "description": "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB.",
+                            "example": 107374182400,
+                            "format": "int64",
+                            "maximum": 109951162777600,
+                            "minimum": 107374182400,
+                            "title": "usageThreshold",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "creationToken",
+                        "serviceLevel"
+                    ],
+                    "type": "object"
+                },
+                "tags": {
+                    "description": "Resource tags",
+                    "type": "object"
+                },
+                "type": {
+                    "description": "Resource type",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "location",
+                "properties"
+            ],
+            "type": "object",
+            "x-ms-azure-resource": true
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2017-08-15"
+        }
+    }
+}
